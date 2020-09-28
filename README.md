@@ -1,34 +1,62 @@
-# Programa de estágio - 2020-1
+# [BACK-END] Estágio Aiko 
+> Descrição curta sobre o que seu projeto faz.
 
-![Aiko](imagens/aiko.png)
+Desenvolvimento de uma API para o programa de estágio Aiko seguindo os moldes da API Olho Vivo da SPTrans para informações sobre ônibus.
 
-O objetivo desta etapa é que você desenvolvedor implemente um dos testes listados a seguir, para que possamos avaliar seu conhecimento técnico em determinada área e a metodologia aplicada no desenvolvimento do teste.
+![](../header.png)
 
-Os testes não são restritos a uma tecnologia específica, o objetivo é que você consiga mostrar todo seu conhecimento e potencial como desenvolvedor utilizando as tecnologias que já sabe.
+## Instalação
 
-## Testes
+Instalando o nvm e o Node.js
 
-Os testes foram separados por "frentes" de desenvolvimento que se encaixam com a divisão do trabalho aplicada na empresa, escolha a que se sentir mais confortável em desenvolver.
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+```
+```sh
+nvm install v9
+```
+Instalando o Adonis.js
 
-* [Front-end](front-end.md)
-* [Back-end](back-end.md)
-* [Android](android.md)
+```sh
+npm i -g @adonisjs/cli
+```
 
-## Entregas
+Instalando o Banco de Dados
 
-Para realizar a entrega do teste você deve:
+```sh
+npm install pg
+```
 
-* Relizar o fork e clonar esse repositório para sua máquina
-  
-* Criar uma branch com o nome de `teste/[TIPO DO TESTE]/[NOME]`
-  * `[TIPO DO TESTE]`: O teste que foi escolhido: `front-end`, `back-end` ou `android`
-  * `[SEU NOME]`: Seu nome
-  * Exemplos: `teste/front-end/fulano`; `teste/android/beltrano`
-  
-* Faça um commit da sua branch com a implementação de algum dos testes
-  
-* Realize o pull request da sua branch nesse repositório
+## Execução 
 
-Ficou em dúvida de como fazer um pull request? Talvez este [artigo](https://terminalroot.com.br/2017/12/como-criar-um-pull-request-no-github.html) possa ajudar.
+Dentro da pasta do projeto (back-end), crie um arquivo .env (utilize como base o arquivo dotEnv-exemple) com as informações do banco e execute o seguinte comando caso seja a primeira execução
+```sh
+adonis migration:run
+```
 
-Além do pull request você deve gravar um vídeo de no máximo 30 minutos mostrando o que foi desenvolvido, falando sobre as decisões que foram tomadas, as tecnologias utilizadas, arquitetura e tudo que você achar relevante. A facecam é opcional, mas é sempre um extra. Esse vídeo deve ser postado no youtube (pode ser não listado) e seu link deve estar no `README.md` do projeto.
+Nas vezes seguintes, basta executar
+
+```sh
+adonis serve --dev
+```
+
+## Tecnologias utilizadas
+
+Para desenvolver a API foi utilizado Node.js com o framework Adonis.js, Lucid ORM, CORS e Validator
+O banco de dados escolhido foi o PostgreSQL
+O deploy foi feito no Heroku, você pode acessar em https://api-aiko.herokuapp.com/
+
+A arquitetura foi MVC
+
+A documentação da API foi feita utilizando a ferramenta do Postman, que você pode encontar nesse [link](https://documenter.getpostman.com/view/12883258/TVKJxEVZ)
+
+
+## Vídeo no YouTube
+
+[Link]()
+
+## Meta
+
+Sávio Miranda – [@SirSavi0](https://twitter.com/SirSavi0) – saviomendesmiranda@gmail.com
+
+[https://github.com/sirsavio/](https://github.com/SirSavio/)
