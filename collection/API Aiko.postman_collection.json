@@ -1,0 +1,2475 @@
+{
+	"info": {
+		"_postman_id": "f1755850-8884-4685-a3fa-7e96b4f2bc10",
+		"name": "API Aiko",
+		"description": "API com o objetivo de fornecer informações sobre o transporte público da cidade de São Paulo, similar a API Olho Vivo para o desafio do estágio Aiko.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuários",
+			"item": [
+				{
+					"name": "Add Usuário",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usuario\": \"root\",\n\t\"senha\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{base}}/user",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Adiciona um novo usuário"
+					},
+					"response": [
+						{
+							"name": "Add Usuário",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"usuario\": \"root\",\n\t\"senha\": \"1234\"\n}"
+								},
+								"url": {
+									"raw": "{{base}}/user",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "166"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:05:34 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"usuario\": \"root\",\n    \"senha\": \"$2a$10$9hzmF1RReds8c4mYwJooUeAQ6RVZAKv8Buu9.BC8/Ew09l1J7heh.\",\n    \"created_at\": \"2020-09-27 12:05:34\",\n    \"updated_at\": \"2020-09-27 12:05:34\",\n    \"id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Login Usuário",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usuario\": \"root\",\n\t\"senha\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{base}}/login",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Aprova o login de um usuário"
+					},
+					"response": [
+						{
+							"name": "Login Usuário",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"usuario\": \"root\",\n\t\"senha\": \"1234\"\n}"
+								},
+								"url": {
+									"raw": "{{base}}/login",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:05:51 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"bearer\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTYwMTIwODM1MX0.BZqBtrWcgtniyn9Ir-j5g5UY06liRQP-2hFFnSAknPY\",\n    \"refreshToken\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Veículos",
+			"item": [
+				{
+					"name": "Add Veículo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{hash}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Veiculo 01\",\n\t\"modelo\": \"Mercedes\",\n\t\"linha_id\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base}}/veiculo",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"veiculo"
+							]
+						},
+						"description": "Adiciona um novo veículo e cria uma posição default."
+					},
+					"response": [
+						{
+							"name": "Add Veículo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Veiculo 01\",\n\t\"modelo\": \"Mercedes\",\n\t\"linha_id\": 1\n}"
+								},
+								"url": {
+									"raw": "{{base}}/veiculo",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"veiculo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "299"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:06:37 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1\",\n        \"nome\": \"Veiculo 01\",\n        \"modelo\": \"Mercedes\",\n        \"linha_id\": \"1\",\n        \"created_at\": \"2020-09-27 12:06:37\",\n        \"updated_at\": \"2020-09-27 12:06:37\",\n        \"posicao_veiculos\": {\n            \"id\": \"1\",\n            \"latitude\": \"0.000000\",\n            \"longitude\": \"0.000000\",\n            \"veiculo_id\": \"1\",\n            \"created_at\": \"2020-09-27 12:06:37\",\n            \"updated_at\": \"2020-09-27 12:06:37\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update Veículo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Veiculo 01\",\n\t\"modelo\": \"Mercedes\",\n\t\"linha_id\": 1\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/veiculo/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"veiculo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Adiciona um novo veículo e cria uma posição default."
+					},
+					"response": [
+						{
+							"name": "Update Veículo",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Veiculo 01\",\n\t\"modelo\": \"Mercedes\",\n\t\"linha_id\": 1\n}"
+								},
+								"url": {
+									"raw": "{{base}}/veiculo/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"veiculo",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "250"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:14:41 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1\",\n        \"nome\": \"Veiculo 01\",\n        \"modelo\": \"Mercedes\",\n        \"linha_id\": \"1\",\n        \"created_at\": \"2020-09-27 12:06:37\",\n        \"updated_at\": \"2020-09-27 12:14:41\",\n        \"posicao_veiculos\": {\n            \"id\": \"1\",\n            \"veiculo_id\": \"1\",\n            \"latitude\": \"10.000000\",\n            \"longitude\": \"50.000000\"\n        },\n        \"linha\": \"Linha 01\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Show Veículo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/veiculo/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"veiculo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Recupera um veículo pelo id."
+					},
+					"response": [
+						{
+							"name": "Show Veículo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/veiculo/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"veiculo",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:15:03 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1\",\n        \"nome\": \"Veiculo 01\",\n        \"modelo\": \"Mercedes\",\n        \"linha_id\": \"1\",\n        \"created_at\": \"2020-09-27 12:06:37\",\n        \"updated_at\": \"2020-09-27 12:14:41\",\n        \"linha\": \"Linha 01\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Index Veículo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/veiculo/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"veiculo",
+								""
+							]
+						},
+						"description": "Recupera todos os veículos."
+					},
+					"response": [
+						{
+							"name": "Index Veículo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/veiculo/",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"veiculo",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "311"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:15:18 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"2\",\n        \"nome\": \"Veiculo 02\",\n        \"modelo\": \"Mercedes\",\n        \"linha_id\": \"1\",\n        \"created_at\": \"2020-09-27 12:13:37\",\n        \"updated_at\": \"2020-09-27 12:13:37\",\n        \"linha\": \"Linha 01\"\n    },\n    {\n        \"id\": \"1\",\n        \"nome\": \"Veiculo 01\",\n        \"modelo\": \"Mercedes\",\n        \"linha_id\": \"1\",\n        \"created_at\": \"2020-09-27 12:06:37\",\n        \"updated_at\": \"2020-09-27 12:14:41\",\n        \"linha\": \"Linha 01\"\n    }\n]"
+						},
+						{
+							"name": "Index Veículo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/veiculo/",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"veiculo",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "311"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:15:18 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"2\",\n        \"nome\": \"Veiculo 02\",\n        \"modelo\": \"Mercedes\",\n        \"linha_id\": \"1\",\n        \"created_at\": \"2020-09-27 12:13:37\",\n        \"updated_at\": \"2020-09-27 12:13:37\",\n        \"linha\": \"Linha 01\"\n    },\n    {\n        \"id\": \"1\",\n        \"nome\": \"Veiculo 01\",\n        \"modelo\": \"Mercedes\",\n        \"linha_id\": \"1\",\n        \"created_at\": \"2020-09-27 12:06:37\",\n        \"updated_at\": \"2020-09-27 12:14:41\",\n        \"linha\": \"Linha 01\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Index Paradas Veículo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/paradasVeiculo/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"paradasVeiculo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Recupera todas as paradas de um veículo."
+					},
+					"response": [
+						{
+							"name": "Index Paradas Veículo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/paradasVeiculo/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"paradasVeiculo",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "332"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:15:48 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"1\",\n    \"nome\": \"Veiculo 01\",\n    \"modelo\": \"Mercedes\",\n    \"linha_id\": \"1\",\n    \"created_at\": \"2020-09-27 12:06:37\",\n    \"updated_at\": \"2020-09-27 12:14:41\",\n    \"paradas\": [\n        {\n            \"id\": 1,\n            \"nome\": \"Parada 01\",\n            \"latitude\": \"1.000000\",\n            \"longitude\": \"-1.000000\",\n            \"created_at\": \"2020-09-27 12:06:10\",\n            \"updated_at\": \"2020-09-27 12:06:10\",\n            \"pivot\": {\n                \"parada_id\": \"1\",\n                \"linha_id\": \"1\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Veículo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/veiculo/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"veiculo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Apaga um veículo pelo id."
+					},
+					"response": [
+						{
+							"name": "Delete Veículo",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base}}/veiculo/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"veiculo",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:20:03 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Linhas",
+			"item": [
+				{
+					"name": "Add Linha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Linha 01\",\n\t\"paradas\": [1]\n}"
+						},
+						"url": {
+							"raw": "{{base}}/linhas",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"linhas"
+							]
+						},
+						"description": "Adiciona uma nova linha."
+					},
+					"response": [
+						{
+							"name": "Add Linha",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Linha 01\",\n\t\"paradas\": [2]\n}"
+								},
+								"url": {
+									"raw": "{{base}}/linhas",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"linhas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:21:09 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"2\",\n        \"nome\": \"Linha 01\",\n        \"created_at\": \"2020-09-27 12:21:09\",\n        \"updated_at\": \"2020-09-27 12:21:09\",\n        \"paradas\": [\n            {\n                \"id\": 2,\n                \"nome\": \"Parada 02\",\n                \"latitude\": \"1.000000\",\n                \"longitude\": \"-1.000000\",\n                \"created_at\": \"2020-09-27 12:16:25\",\n                \"updated_at\": \"2020-09-27 12:16:25\",\n                \"pivot\": {\n                    \"parada_id\": \"2\",\n                    \"linha_id\": \"2\"\n                }\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update Linha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Linha 01\",\n\t\"paradas\": [2]\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/linhas/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"linhas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Altera informações de uma linha já existente."
+					},
+					"response": [
+						{
+							"name": "Update Linha",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Linha 01\",\n\t\"paradas\": [2]\n}"
+								},
+								"url": {
+									"raw": "{{base}}/linhas/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"linhas",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:17:32 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1\",\n        \"nome\": \"Linha 01\",\n        \"created_at\": \"2020-09-27 12:06:25\",\n        \"updated_at\": \"2020-09-27 12:06:25\",\n        \"paradas\": [\n            {\n                \"id\": 2,\n                \"nome\": \"Parada 02\",\n                \"latitude\": \"1.000000\",\n                \"longitude\": \"-1.000000\",\n                \"created_at\": \"2020-09-27 12:16:25\",\n                \"updated_at\": \"2020-09-27 12:16:25\",\n                \"pivot\": {\n                    \"parada_id\": \"2\",\n                    \"linha_id\": \"1\"\n                }\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Show Linha",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/linhas/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"linhas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Recupera uma linha pelo id."
+					},
+					"response": [
+						{
+							"name": "Show Linha",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/linhas/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"linhas",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:17:46 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1\",\n        \"nome\": \"Linha 01\",\n        \"created_at\": \"2020-09-27 12:06:25\",\n        \"updated_at\": \"2020-09-27 12:06:25\",\n        \"paradas\": [\n            {\n                \"id\": 2,\n                \"nome\": \"Parada 02\",\n                \"latitude\": \"1.000000\",\n                \"longitude\": \"-1.000000\",\n                \"created_at\": \"2020-09-27 12:16:25\",\n                \"updated_at\": \"2020-09-27 12:16:25\",\n                \"pivot\": {\n                    \"parada_id\": \"2\",\n                    \"linha_id\": \"1\"\n                }\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Index Linha",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/linhas/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"linhas",
+								""
+							]
+						},
+						"description": "Recupera todas as linhas."
+					},
+					"response": [
+						{
+							"name": "Index Linha",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/linhas/",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"linhas",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:17:54 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1\",\n        \"nome\": \"Linha 01\",\n        \"created_at\": \"2020-09-27 12:06:25\",\n        \"updated_at\": \"2020-09-27 12:06:25\",\n        \"paradas\": [\n            {\n                \"id\": 2,\n                \"nome\": \"Parada 02\",\n                \"latitude\": \"1.000000\",\n                \"longitude\": \"-1.000000\",\n                \"created_at\": \"2020-09-27 12:16:25\",\n                \"updated_at\": \"2020-09-27 12:16:25\",\n                \"pivot\": {\n                    \"parada_id\": \"2\",\n                    \"linha_id\": \"1\"\n                }\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Index Paradas Linha",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/paradasLinha/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"paradasLinha",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Recupera todas as paradas de uma linha."
+					},
+					"response": [
+						{
+							"name": "Index Paradas Linha",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/paradasLinha/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"paradasLinha",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "295"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:18:09 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"1\",\n    \"nome\": \"Linha 01\",\n    \"created_at\": \"2020-09-27 12:06:25\",\n    \"updated_at\": \"2020-09-27 12:06:25\",\n    \"paradas\": [\n        {\n            \"id\": 2,\n            \"nome\": \"Parada 02\",\n            \"latitude\": \"1.000000\",\n            \"longitude\": \"-1.000000\",\n            \"created_at\": \"2020-09-27 12:16:25\",\n            \"updated_at\": \"2020-09-27 12:16:25\",\n            \"pivot\": {\n                \"parada_id\": \"2\",\n                \"linha_id\": \"1\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Index Veículos Linha",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/veiculosLinha/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"veiculosLinha",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Recupera todas os veículos de uma linha."
+					},
+					"response": [
+						{
+							"name": "Index Veículos Linha",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/veiculosLinha/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"veiculosLinha",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "383"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:18:27 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"1\",\n    \"nome\": \"Linha 01\",\n    \"created_at\": \"2020-09-27 12:06:25\",\n    \"updated_at\": \"2020-09-27 12:06:25\",\n    \"veiculos\": [\n        {\n            \"id\": \"2\",\n            \"nome\": \"Veiculo 02\",\n            \"modelo\": \"Mercedes\",\n            \"linha_id\": \"1\",\n            \"created_at\": \"2020-09-27 12:13:37\",\n            \"updated_at\": \"2020-09-27 12:13:37\"\n        },\n        {\n            \"id\": \"1\",\n            \"nome\": \"Veiculo 01\",\n            \"modelo\": \"Mercedes\",\n            \"linha_id\": \"1\",\n            \"created_at\": \"2020-09-27 12:06:37\",\n            \"updated_at\": \"2020-09-27 12:14:41\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Linha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/linhas/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"linhas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Apaga uma linha pelo id."
+					},
+					"response": [
+						{
+							"name": "Delete Linha",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base}}/linhas/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"linhas",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:20:10 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			}
+		},
+		{
+			"name": "Paradas",
+			"item": [
+				{
+					"name": "Add Parada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Parada 01\",\n\t\"latitude\": 1,\n\t\"longitude\": -1\n}"
+						},
+						"url": {
+							"raw": "{{base}}/paradas",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"paradas"
+							]
+						},
+						"description": "Adiciona uma nova parada."
+					},
+					"response": [
+						{
+							"name": "Add Parada",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Parada 02\",\n\t\"latitude\": 1,\n\t\"longitude\": -1\n}"
+								},
+								"url": {
+									"raw": "{{base}}/paradas",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"paradas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:16:25 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"nome\": \"Parada 02\",\n    \"longitude\": -1,\n    \"latitude\": 1,\n    \"created_at\": \"2020-09-27 12:16:25\",\n    \"updated_at\": \"2020-09-27 12:16:25\",\n    \"id\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Parada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Parada 01\",\n\t\"latitude\": 1,\n\t\"longitude\": -1\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/paradas/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"paradas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Altera informações de uma parada já existente."
+					},
+					"response": [
+						{
+							"name": "Update Parada",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Parada 01\",\n\t\"latitude\": 1,\n\t\"longitude\": -1\n}"
+								},
+								"url": {
+									"raw": "{{base}}/paradas/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"paradas",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:16:38 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"nome\": \"Parada 01\",\n    \"latitude\": 1,\n    \"longitude\": -1,\n    \"created_at\": \"2020-09-27 12:06:10\",\n    \"updated_at\": \"2020-09-27 12:16:38\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Show Parada",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/paradas/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"paradas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Recupera uma parada pelo id."
+					},
+					"response": [
+						{
+							"name": "Show Parada",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/paradas/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"paradas",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "143"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:16:47 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"nome\": \"Parada 01\",\n    \"latitude\": \"1.000000\",\n    \"longitude\": \"-1.000000\",\n    \"created_at\": \"2020-09-27 12:06:10\",\n    \"updated_at\": \"2020-09-27 12:16:38\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Index Parada",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/paradas/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"paradas",
+								""
+							]
+						},
+						"description": "Recupera todas as paradas."
+					},
+					"response": [
+						{
+							"name": "Index Parada",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/paradas/",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"paradas",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "289"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:16:55 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"nome\": \"Parada 02\",\n        \"latitude\": \"1.000000\",\n        \"longitude\": \"-1.000000\",\n        \"created_at\": \"2020-09-27 12:16:25\",\n        \"updated_at\": \"2020-09-27 12:16:25\"\n    },\n    {\n        \"id\": 1,\n        \"nome\": \"Parada 01\",\n        \"latitude\": \"1.000000\",\n        \"longitude\": \"-1.000000\",\n        \"created_at\": \"2020-09-27 12:06:10\",\n        \"updated_at\": \"2020-09-27 12:16:38\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Index Linhas Parada",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/linhasParada/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"linhasParada",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Recupera todas as linhas que passam por essa parada."
+					},
+					"response": [
+						{
+							"name": "Index Linhas Parada",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/linhasParada/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"linhasParada",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "294"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:17:05 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"nome\": \"Parada 01\",\n    \"latitude\": \"1.000000\",\n    \"longitude\": \"-1.000000\",\n    \"created_at\": \"2020-09-27 12:06:10\",\n    \"updated_at\": \"2020-09-27 12:16:38\",\n    \"linhas\": [\n        {\n            \"id\": \"1\",\n            \"nome\": \"Linha 01\",\n            \"created_at\": \"2020-09-27 12:06:25\",\n            \"updated_at\": \"2020-09-27 12:06:25\",\n            \"pivot\": {\n                \"linha_id\": \"1\",\n                \"parada_id\": \"1\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Parada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/paradas/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"paradas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Apaga uma parada pelo id."
+					},
+					"response": [
+						{
+							"name": "Delete Parada",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base}}/paradas/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"paradas",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:20:22 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Index Parada Próxima",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"longitude\": -1,\n\t\"latitude\": 0.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/paradaProxima",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"paradaProxima"
+							]
+						},
+						"description": "Retorna a parada mais próxima a localização passada."
+					},
+					"response": [
+						{
+							"name": "Index Parada Próxima",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"longitude\": -1,\n\t\"latitude\": 0.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3333/paradaProxima",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3333",
+									"path": [
+										"paradaProxima"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "143"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Sep 2020 18:14:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"nome\": \"Parada 02\",\n    \"latitude\": \"1.000000\",\n    \"longitude\": \"-1.000000\",\n    \"created_at\": \"2020-09-26 16:10:01\",\n    \"updated_at\": \"2020-09-26 16:10:01\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Index Parada Próxima Linha",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"linha_id\": 2,\n\t\"longitude\": -1,\n\t\"latitude\": 0.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/paradaProximaLinha",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"paradaProximaLinha"
+							]
+						},
+						"description": "Retorna a parada de uma linha mais próxima a localização passada."
+					},
+					"response": [
+						{
+							"name": "Index Parada Próxima",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"longitude\": -1,\n\t\"latitude\": 0.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3333/paradaProxima",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3333",
+									"path": [
+										"paradaProxima"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "143"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Sep 2020 18:14:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"nome\": \"Parada 02\",\n    \"latitude\": \"1.000000\",\n    \"longitude\": \"-1.000000\",\n    \"created_at\": \"2020-09-26 16:10:01\",\n    \"updated_at\": \"2020-09-26 16:10:01\"\n}"
+						},
+						{
+							"name": "Index Parada Próxima Linha",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"linha_id\": 2,\n\t\"longitude\": -1,\n\t\"latitude\": 0.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3333/paradaProximaLinha",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3333",
+									"path": [
+										"paradaProximaLinha"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "184"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Sep 2020 18:16:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"nome\": \"Parada 02\",\n    \"latitude\": \"1.000000\",\n    \"longitude\": \"-1.000000\",\n    \"created_at\": \"2020-09-26 16:10:01\",\n    \"updated_at\": \"2020-09-26 16:10:01\",\n    \"pivot\": {\n        \"parada_id\": \"2\",\n        \"linha_id\": \"2\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Posição Veículo",
+			"item": [
+				{
+					"name": "Update Posição Veículo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"latitude\": 10,\n\t\"longitude\": 50\n\t\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/posicao_veiculo/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"posicao_veiculo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Altera a posição de um veículo."
+					},
+					"response": [
+						{
+							"name": "Update Posição Veículo",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"latitude\": 10,\n\t\"longitude\": 50\n\t\n}"
+								},
+								"url": {
+									"raw": "{{base}}/posicao_veiculo/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"posicao_veiculo",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:18:42 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"1\",\n    \"latitude\": 10,\n    \"longitude\": 50,\n    \"veiculo_id\": \"1\",\n    \"created_at\": \"2020-09-27 12:06:37\",\n    \"updated_at\": \"2020-09-27 12:18:42\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Index Posição Veículo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/posicao_veiculo/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"posicao_veiculo",
+								""
+							]
+						},
+						"description": "Recupera a posição de todos os veículos."
+					},
+					"response": [
+						{
+							"name": "Index Posição Veículo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/posicao_veiculo/",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"posicao_veiculo",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "289"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:18:49 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"2\",\n        \"latitude\": \"0.000000\",\n        \"longitude\": \"0.000000\",\n        \"veiculo_id\": \"2\",\n        \"created_at\": \"2020-09-27 12:13:37\",\n        \"updated_at\": \"2020-09-27 12:13:37\"\n    },\n    {\n        \"id\": \"1\",\n        \"latitude\": \"10.000000\",\n        \"longitude\": \"50.000000\",\n        \"veiculo_id\": \"1\",\n        \"created_at\": \"2020-09-27 12:06:37\",\n        \"updated_at\": \"2020-09-27 12:18:42\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Show Posição Veículo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/posicao_veiculo/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"posicao_veiculo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Recupera a posição de um veículo pelo id."
+					},
+					"response": [
+						{
+							"name": "Show Posição Veículo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{base}}/posicao_veiculo/1",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"posicao_veiculo",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Sep 2020 12:19:03 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"1\",\n    \"latitude\": \"10.000000\",\n    \"longitude\": \"50.000000\",\n    \"veiculo_id\": \"1\",\n    \"created_at\": \"2020-09-27 12:06:37\",\n    \"updated_at\": \"2020-09-27 12:18:42\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

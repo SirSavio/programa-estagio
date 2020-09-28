@@ -38,7 +38,7 @@ adonis serve --dev
 
 ## Tecnologias utilizadas
 
-Para desenvolver a API foi utilizado Node.js com o framework Adonis.js, Lucid ORM, CORS e Validator
+Para desenvolver a API foi utilizado Node.js com o framework Adonis.js, Lucid ORM, CORS, BodyParser e Validator
 O banco de dados escolhido foi o PostgreSQL
 O deploy foi feito no Heroku, você pode acessar em https://api-aiko.herokuapp.com/
 
@@ -48,7 +48,7 @@ A documentação da API foi feita utilizando a ferramenta do Postman, que você 
 
 ## Collection Postman
 
-A collection com todas as rotas está em back-end/collection
+A collection com todas as rotas está em collection
 
 ## Vídeo no YouTube
 
