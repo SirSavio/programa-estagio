@@ -1,9 +1,5 @@
 # [BACK-END] Estágio Aiko 
-> Descrição curta sobre o que seu projeto faz.
-
-Desenvolvimento de uma API para o programa de estágio Aiko seguindo os moldes da API Olho Vivo da SPTrans para informações sobre ônibus.
-
-![](../header.png)
+> Desenvolvimento de uma API para o programa de estágio Aiko seguindo os moldes da API Olho Vivo da SPTrans para informações sobre ônibus.
 
 ## Instalação
 
@@ -50,6 +46,9 @@ A arquitetura foi MVC
 
 A documentação da API foi feita utilizando a ferramenta do Postman, que você pode encontar nesse [link](https://documenter.getpostman.com/view/12883258/TVKJxEVZ)
 
+## Collection Postman
+
+A collection com todas as rotas está em back-end/collection
 
 ## Vídeo no YouTube
 
