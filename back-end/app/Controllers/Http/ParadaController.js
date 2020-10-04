@@ -230,6 +230,11 @@ class ParadaController {
     parada = parada.toJSON()
 
     let menor = []
+
+    if(parada.length == 0){ //Caso nao tenha paradas na linha
+      return []
+    }
+
     for(let i = 0; i < parada.length; i++){ //Verifico qual a menor distancia
       let lat = parada[i].latitude
       let long = parada[i].longitude

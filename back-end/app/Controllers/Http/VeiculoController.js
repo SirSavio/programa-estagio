@@ -85,8 +85,8 @@ class VeiculoController {
     //Crio no banco o veiculo
     const veiculo = await Veiculo.create({...data})
 
-    //Se nao existir uma posicao para esse veiculo crio uma default
-    await PosicaoVeiculo.findOrCreate({veiculo_id: veiculo.id}, {latitude: 0, longitude: 0, veiculo_id: veiculo.id})
+    //Crio uma posicao default para esse veiculo
+    await PosicaoVeiculo.create({latitude: 0, longitude: 0, veiculo_id: veiculo.id})
     
     return await Veiculo.query() //Retorno o veiculo com a posicao
       .select('*')
@@ -166,7 +166,11 @@ class VeiculoController {
       return response.status(400).json({message: 'ID da linha inválido'}) //Caso falhe
     }
 
-    let veiculo = await Veiculo.findOrFail(params.id) //Recupero o veiculo
+    let veiculo = await Veiculo.find(params.id) //Recupero o veiculo
+    
+    if(!veiculo){
+      return response.status(400).json({message: 'ID inválido'}) //Caso falhe
+    }
 
     await veiculo.merge(data) //Atualizo os dados
 

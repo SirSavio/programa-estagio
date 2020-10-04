@@ -6,7 +6,7 @@ const Schema = use('Schema')
 class LinhaParadaSchema extends Schema {
   up () {
     this.create('linha_paradas', (table) => {
-      table.increments()
+      table.bigIncrements()
       table
         .bigInteger('linha_id')
         .unsigned()
