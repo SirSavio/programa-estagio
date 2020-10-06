@@ -4,6 +4,16 @@ const Parada = use('App/Models/Parada')
 
 const {validate} = use('Validator')
 
+//Mensagens personalizadas caso a validacao falhe
+const messages = {
+  'longitide.required': 'É preciso informar a longitude',
+  'longitude.number': 'A longitude deve ser um número',
+  'latitude.required': 'É preciso informar a latitude',
+  'latitude.number': 'A latitude deve ser um número',
+  'nome.required': 'É preciso informar um nome',
+  'nome.unique': 'O nome não pode ser repetido'
+}
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -23,8 +33,12 @@ class ParadaController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    const paradas = await Parada.all() //Recupera todas as paradas
-    return paradas
+    try{
+      const paradas = await Parada.all() //Recupera todas as paradas
+      return paradas
+    }catch(err){
+      return response.status(err.status).json({ message: err.message });
+    }
   }
 
   /**
@@ -42,16 +56,6 @@ class ParadaController {
       'longitude',
       'latitude'
     ])
-
-    //Mensagens personalizadas caso a validacao falhe
-    const messages = {
-      'longitide.required': 'É preciso informar a longitude',
-      'longitude.number': 'A longitude deve ser um número',
-      'latitude.required': 'É preciso informar a latitude',
-      'latitude.number': 'A latitude deve ser um número',
-      'nome.required': 'É preciso informar um nome',
-      'nome.unique': 'O nome não pode ser repetido'
-    }
 
     //Validacao dos dados
     const rules = {
@@ -106,16 +110,6 @@ class ParadaController {
       'longitude',
       'latitude'
     ])
-
-    //Mensagens personalizadas caso a validacao falhe
-    const messages = {
-      'longitide.required': 'É preciso informar a longitude',
-      'longitude.number': 'A longitude deve ser um número',
-      'latitude.required': 'É preciso informar a latitude',
-      'latitude.number': 'A latitude deve ser um número',
-      'nome.required': 'É preciso informar um nome',
-      'nome.unique': 'O nome não pode ser repetido'
-    }
 
     //Validacao dos dados
     const rules = {
@@ -203,14 +197,6 @@ class ParadaController {
       'longitude',
       'latitude'
     ])
-
-    //Mensagens personalizadas caso a validacao falhe
-    const messages = {
-      'longitide.required': 'É preciso informar a longitude',
-      'longitude.number': 'A longitude deve ser um número',
-      'latitude.required': 'É preciso informar a latitude',
-      'latitude.number': 'A latitude deve ser um número'
-    }
 
     //Validacao dos dados
     const rules = {

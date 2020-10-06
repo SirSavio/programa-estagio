@@ -5,6 +5,19 @@ const Parada = use('App/Models/Parada')
 
 const {validate} = use('Validator')
 
+//Mensagens personalizadas caso falhe
+const messages = {
+  'nome.required': 'É preciso informar um nome',
+  'nome.unique': 'O nome não pode ser repetido',
+  'paradas.required': 'É preciso informar as paradas',
+  'linha_id.required': 'É preciso informar uma linha',
+  'linha_id.number': 'ID da linha inválido',
+  'longitide.required': 'É preciso informar a longitude',
+  'longitude.number': 'A longitude deve ser um número',
+  'latitude.required': 'É preciso informar a latitude',
+  'latitude.number': 'A latitude deve ser um número'
+}
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -50,13 +63,6 @@ class LinhaController {
     const rules = {
       nome: 'required|unique:linhas',
       paradas: 'required'
-    }
-
-    //Mensagens personalizadas caso a validacao falhe
-    const messages = {
-      'nome.required': 'É preciso informar um nome',
-      'nome.unique': 'O nome não pode ser repetido',
-      'paradas.required': 'É preciso informar as paradas'
     }
 
     const validacao = await validate(data, rules, messages)
@@ -135,12 +141,6 @@ class LinhaController {
     const rules = {
       nome: `required|unique:linhas,nome,id,${params.id}`,
       paradas: 'required'
-    }
-    //Mensagens personalizadas caso falhe
-    const messages = {
-      'nome.required': 'É preciso informar um nome',
-      'nome.unique': 'O nome não pode ser repetido',
-      'paradas.required': 'É preciso informar as paradas'
     }
 
     const validacao = await validate(data, rules, messages)
@@ -268,17 +268,7 @@ class LinhaController {
       longitude: 'required|number',
       latitude: 'required|number'
     }
-
-    //Mensagens personalizadas caso a validação falhe
-    const messages = {
-      'linha_id.required': 'É preciso informar uma linha',
-      'linha_id.number': 'ID da linha inválido',
-      'longitide.required': 'É preciso informar a longitude',
-      'longitude.number': 'A longitude deve ser um número',
-      'latitude.required': 'É preciso informar a latitude',
-      'latitude.number': 'A latitude deve ser um número'
-    }
-
+    
     const validacao = await validate(data, rules, messages)
 
     //Se a validacao falhar retorna o erro

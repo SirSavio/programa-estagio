@@ -5,6 +5,16 @@ const PosicaoVeiculo = use('App/Models/PosicaoVeiculo')
 
 const { validate } = use('Validator')
 
+//Mensagens personalizadas caso a validacao falhe
+const messages = {
+  'nome.required': 'É preciso informar um nome',
+  'nome.unique': 'O nome não pode ser repetido',
+  'modelo.required': 'É precisa informar um modelo',
+  'linha_id.required': 'É preciso informar a linha do veículo',
+  'linha_id.number': 'Informe o ID da linha do veículo',
+  'linha_id.min': 'ID da linha inválido'
+}
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -58,16 +68,6 @@ class VeiculoController {
       nome: 'required|unique:veiculos',
       modelo: 'required',
       linha_id: 'required|number|min:0'
-    }
-
-    //Mensagens personalizadas caso a validacao falhe
-    const messages = {
-      'nome.required': 'É preciso informar um nome',
-      'nome.unique': 'O nome não pode ser repetido',
-      'modelo.required': 'É precisa informar um modelo',
-      'linha_id.required': 'É preciso informar a linha do veículo',
-      'linha_id.number': 'Informe o ID da linha do veículo',
-      'linha_id.min': 'ID da linha inválido'
     }
 
     const validacao = await validate(data, rules, messages)
@@ -142,16 +142,6 @@ class VeiculoController {
       nome: `required|unique:veiculos,nome,id,${params.id}`,
       modelo: 'required',
       linha_id: 'required|number|min:0'
-    }
-
-    //Mensagens personalizadas caso a validacao falhe
-    const messages = {
-      'nome.required': 'É preciso informar um nome',
-      'nome.unique': 'O nome não pode ser repetido',
-      'modelo.required': 'É precisa informar um modelo',
-      'linha_id.required': 'É preciso informar a linha do veículo',
-      'linha_id.number': 'Informe o ID da linha do veículo',
-      'linha_id.min': 'ID da linha inválido'
     }
 
     const validacao = await validate(data, rules, messages)

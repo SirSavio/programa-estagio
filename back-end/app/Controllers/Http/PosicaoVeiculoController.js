@@ -4,6 +4,14 @@ const PosicaoVeiculo = use('App/Models/PosicaoVeiculo')
 
 const {validate} = use('Validator')
 
+//Mensagens personalizadas caso a validacao falhe
+const messages = {
+  'longitide.required': 'É preciso informar a longitude',
+  'longitude.number': 'A longitude deve ser um número',
+  'latitude.required': 'É preciso informar a latitude',
+  'latitude.number': 'A latitude deve ser um número'
+}
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -22,7 +30,11 @@ class PosicaoVeiculoController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    return await PosicaoVeiculo.all() //retorno todas as posições dos veiculos
+    try{
+      return await PosicaoVeiculo.all() //retorno todas as posições dos veiculos
+    }catch(err){
+      return response.status(err.status).json({ message: err.message });
+    }
   }
 
   /**
@@ -62,14 +74,6 @@ class PosicaoVeiculoController {
     const rules = {
       longitude: 'required|number',
       latitude: 'required|number'
-    }
-
-    //Mensagens personalizadas caso a validacao falhe
-    const messages = {
-      'longitide.required': 'É preciso informar a longitude',
-      'longitude.number': 'A longitude deve ser um número',
-      'latitude.required': 'É preciso informar a latitude',
-      'latitude.number': 'A latitude deve ser um número'
     }
 
     const validacao = await validate(data, rules, messages)
