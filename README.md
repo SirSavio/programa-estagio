@@ -52,7 +52,7 @@ A collection com todas as rotas está em collection
 
 ## Vídeo no YouTube
 
-[Link]()
+[Link](https://youtu.be/Yto6WQBebqk)
 
 ## Meta
 
